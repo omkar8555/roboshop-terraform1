@@ -48,6 +48,7 @@ resource "aws_instance" "instance" {
         "ansible-pull -i localhost, -U https://github.com/omkar8555/learn-ansible.1.git roboshop.yml -e env=$(var.env) -e app_name=$(component_name)"
       ]
     }
+}
 
 resource "aws_route53_record" "record" {
   zone_id = var.zone_id
