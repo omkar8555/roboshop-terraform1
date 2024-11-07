@@ -1,12 +1,3 @@
-resource "aws_instance" "test" {
-    ami =  data.aws_ami.ami.id
-    instance_type = var.instance_type
-    vpc_security_group_ids = [ aws_security_group.sg.id ]
-    tags = {
-        Name = "${var.component_name}-${var.env}"
-        }
-    }
-
 resource "aws_security_group" "sg" {
   name        = "${var.component_name}-${var.env}-sg"
   description = " inbound allow for ${var.component_name} "
@@ -34,3 +25,12 @@ ingress {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  resource "aws_instance" "test" {
+      ami =  data.aws_ami.ami.id
+      instance_type = var.instance_type
+      vpc_security_group_ids = [ aws_security_group.sg.id ]
+      tags = {
+          Name = "${var.component_name}-${var.env}"
+          }
+      }
