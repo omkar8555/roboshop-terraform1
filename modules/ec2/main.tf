@@ -35,14 +35,23 @@ resource "aws_instance" "instance" {
       tags = {
           Name = "${var.component_name}-${var.env}"
           }
-  provisioner "local-exec" {
-      command =  <<EOL
-      cd home/c2-user/roboshop-ansible.1
-      ansible-playbook -i ${self.private_ip}, -e ansible_user=ec2-user -e ansible_password=devOps321 -e app_name=$(var.component_name) -e  env=$(var.env) roboshop.yml
-      EOL
-    }
+
   }
 
+resource "null_resource" "ansible-pull" {
+    provisioner "remote-exec"  {
+        connection  {
+            type = "ssh"
+            user = "ec2-user"
+            password = "DevOps321"
+            host = aws_instance.instance.private_id
+            }
 
+        inline = {
+            "sudo labauto ansible"
+            "ansible-pull -i localhost, -U https://github.com/omkar8555/learn-ansible.1.git roboshop.yml -e env=$(var.env -e app_name=$(var.component_name)"
+            }
+        }
+    }
 
 
