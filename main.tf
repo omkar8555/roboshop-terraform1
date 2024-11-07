@@ -4,6 +4,5 @@ module "ec2" {
     component_name = each.key
     app_port       = each.value["app_port"]
 
-    instance_type  = each.value["instance_type"]
     env            = var.env
     }
