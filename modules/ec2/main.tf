@@ -38,8 +38,8 @@ resource "aws_instance" "instance" {
   provisioner "local-exec" {
       command =  << EOL
       cd home/c2-user/roboshop-ansible.1
-      ansible-playbook -i ${self.private_ip}, -e ansible_user=ec2-user -e ansible_password=devOps321 roboshop.yml
-
+      ansible-playbook -i ${self.private_ip}, -e ansible_user=ec2-user -e ansible_password=devOps321 -e app_name=$(var.component_name) -e env=$(var.env) roboshop.yml
+      EOL
     }
   }
 
