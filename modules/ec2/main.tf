@@ -47,11 +47,11 @@ resource "null_resource" "ansible-pull" {
             host = aws_instance.instance.private_id
             }
 
-        inline = {
-            "sudo labauto ansible"
-            "ansible-pull -i localhost, -U https://github.com/omkar8555/learn-ansible.1.git roboshop.yml -e env=$(var.env) -e app_name=$(var.component_name)"
-            }
-        }
+inline = {
+    "sudo labauto ansible"
+    "ansible-pull -i localhost, -U https://github.com/omkar8555/learn-ansible.1.git roboshop.yml -e env=${var.env}  -e app_name=${var.component_name}"
     }
+}
+}
 
 
