@@ -1,7 +1,7 @@
 module "app_instances" {
     for_each = var.instances
     depends_on = [module.db_instances]
-    source = "./modules/c2"
+    source = "./modules/ec2"
     env    =  var.env
     component_name = each.key
     instance_type  = each.value["instance_type"]
@@ -14,7 +14,7 @@ module "app_instances" {
 module "web_instances" {
     for_each = var.instances
     depends_on = [module.app_instances]
-    source = "./modules/c2"
+    source = "./modules/ec2"
     env    =  var.env
     component_name = each.key
     instance_type  = each.value["instance_type"]
