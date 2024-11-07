@@ -42,7 +42,7 @@ resource "aws_instance" "instance" {
       host     = aws_instance.instance.private_ip
     }
 
-    provisioner "remote-exec" {
+
       inline = [
         "sudo labauto ansible",
         "ansible-pull -i localhost, -U https://github.com/omkar8555/learn-ansible.1.git roboshop.yml -e env=$(var.env) -e app_name=$(component_name)"
