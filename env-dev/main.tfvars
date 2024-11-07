@@ -4,7 +4,7 @@ zone_id     = "Z08947163LH0CXG3JRYK4"
 domain_name = "rdevopsb72.shop"
 
 
-db_instances {
+db_instances = {
     mongodb = {
         app_port      = 27017
         instance_type = "t3.small"
@@ -23,7 +23,7 @@ db_instances {
             }
     }
 
-app_instances {
+app_instances = {
     cart = {
         app_port      = 8080
         instance_type = "t3.small"
@@ -42,8 +42,8 @@ app_instances {
             }
     }
 
-web_instances {
-    cart = {
+web_instances = {
+    frontend = {
         app_port      = 22
         instance_type = "t3.small"
         }
