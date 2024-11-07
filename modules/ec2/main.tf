@@ -30,7 +30,7 @@ ingress {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-
+}
 
 resource "aws_instance" "instance" {
       ami =  data.aws_ami.ami.id
