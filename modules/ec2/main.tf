@@ -1,7 +1,3 @@
-#resource "aws_security_group" "sg" {
- # name        = "${var.component_name}-${var.env}-sg"
-  #description = " inbound allow for ${var.component_name} "
-
 resource "aws_security_group" "sg" {
       name        = "${var.component_name}-${var.env}-sg"
         description = "inbound allow for ${var.component_name}"
