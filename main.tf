@@ -1,5 +1,5 @@
 module "app_instances" {
-    for_each = var.instances
+    for_each = var.app_instances
     depends_on = [module.db_instances]
     source = "./modules/ec2"
     env    =  var.env
@@ -12,7 +12,7 @@ module "app_instances" {
     }
 
 module "web_instances" {
-    for_each = var.instances
+    for_each = var.web_instances
     depends_on = [module.app_instances]
     source = "./modules/ec2"
     env    =  var.env
