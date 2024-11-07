@@ -32,6 +32,7 @@ resource "aws_instance" "instance" {
           Name = "${var.component_name}-${var.env}"
 
       }
+  }
 
   resource "null_instances" "ansible-pull" {
     provisioner "remote-exec" {
